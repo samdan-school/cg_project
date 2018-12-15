@@ -1,0 +1,8 @@
+Debug/
+freeglut.dll
+glew32.dll
+Project.vcxproj
+Project.vcxproj.filters
+Project.vcxproj.user
+*.opendb
+*.opensdf
