@@ -165,7 +165,7 @@ int main(int argc, char **argv)
 	glutDisplayFunc(displayMe);
 	glutSpecialFunc(SpecialKeys);
     glutKeyboardFunc(normalKeys);
-	//setup();
+	setup();
 	glutMainLoop();
 	return 0;
 }
