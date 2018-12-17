@@ -9,7 +9,7 @@
 #include <GL/glut.h>
 
 #include "ReadFile.h"
-#include "constant.cpp"
+#include "w_constant.h"
 
 using namespace std;
 
