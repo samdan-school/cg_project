@@ -12,23 +12,47 @@
 #include "w_constant.h"
 
 using namespace std;
+void draw_face(vector<Face> &face, vector<Color> &color_info, vector<string> &colors, vector<int> &num) {
+	glBegin(GL_TRIANGLES);
+	int i=0;
+	float normal[3];
+	for(int l = 0; l < colors.size(); l++){
+		for (const Color &color : color_info) {
+			if(color.name == colors[l]){
+				glColor3f(color.r, color.b, color.g);
+				for(int s = 0; s < num[l]; s++){
+
+					calcNormal(face[i], normal);
+					glNormal3fv(normal);
+
+					for (int j = 0; j < 3; ++j){
+						glVertex3f(2*face[i].v[j].x, 2*face[i].v[j].y, 2*face[i].v[j].z);
+					}
+					i++;
+				}
+			}
+		}
+	}
+	glEnd();
+}
 
 void draw_residence() {
 	glPushMatrix();
-
 	glRotatef(-90, 1, 0, 0);
 	glRotatef(90, 0, 0, 1);
+	glTranslatef(-340, 180, 0);
 
-	glTranslatef(-200, -200, 0);
+	draw_face(residence_faces, residence_colorInfo, residence_colors, residence_num);
 
-	for(int i = 0; i < residence_faces.size(); ++i) {
-	glColor3f(0, 0,0);
-	glBegin(GL_TRIANGLES);
-	for (int j = 0; j < 3; ++j){
-		glVertex3f(residence_faces[i].v[j].x, residence_faces[i].v[j].y, residence_faces[i].v[j].z);
-	}
-		glEnd();
-	}
+	glPopMatrix();
+}
+
+void draw_home() {
+	glPushMatrix();
+	glRotatef(-90, 1, 0, 0);
+	glRotatef(180, 0, 0, 1);
+	glTranslatef(-320, 320, 0);
+	draw_face(home_faces, home_colorInfo, home_colors, home_num);
 
 	glPopMatrix();
 }
