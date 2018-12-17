@@ -6,3 +6,4 @@ Project.vcxproj.filters
 Project.vcxproj.user
 *.opendb
 *.opensdf
+*.exe
