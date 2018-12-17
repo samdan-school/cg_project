@@ -18,4 +18,16 @@ vector<string> home_colors;
 vector<Color> home_colorInfo;
 vector<int> home_num;
 
+vector<Vertex> red_vertices;
+vector<Face> red_faces;
+vector<string> red_colors;
+vector<Color> red_colorInfo;
+vector<int> red_num;
+
+vector<Vertex> black_vertices;
+vector<Face> black_faces;
+vector<string> black_colors;
+vector<Color> black_colorInfo;
+vector<int> black_num;
+
 #endif // CONSTANT_CPP
