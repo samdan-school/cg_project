@@ -205,3 +205,18 @@ void setup()
     glMateriali(GL_FRONT,GL_SHININESS,64);
     glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 }
+int main(int argc, char **argv)
+{
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+	glutInitWindowSize(800, 800);
+	glutInitWindowPosition(200, 50);
+	glutCreateWindow("World");
+	glutReshapeFunc(resize);
+	glutDisplayFunc(displayMe);
+	glutSpecialFunc(SpecialKeys);
+    glutKeyboardFunc(normalKeys);
+	//setup();
+	glutMainLoop();
+	return 0;
+}

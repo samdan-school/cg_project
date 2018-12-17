@@ -6,10 +6,3 @@ public:
 	~residence();
 };
 
-class Residence
-{
-public:
-	Residence();
-	~Residence();
-};
-
