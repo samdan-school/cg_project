@@ -77,7 +77,7 @@ void zam_suur(){
 
 //zam undsen
 void zam1_suuri(){
-	// glColor3f(0.5f, 0.5f, 0.5f);
+
 
     glBindTexture(GL_TEXTURE_2D,texture_zam);
 
@@ -159,7 +159,7 @@ void zam1_suuri(){
 
 
 void baishin_suuri(){
-glColor3f(0.0f, 0.5f, 0.4f);
+
 glBindTexture(GL_TEXTURE_2D,texture_grass);
 
 	glBegin(GL_QUADS);
@@ -212,7 +212,7 @@ glBindTexture(GL_TEXTURE_2D,texture_grass);
 //yavgan zam
 void zam2_suuri(){
     glBindTexture(GL_TEXTURE_2D,texture_walker);
-    glColor3f(1.0f, 1.0f, 1.0f);
+
     glBegin(GL_QUADS);
 
 
@@ -304,7 +304,7 @@ void zam3_suuri(){
 
     glBindTexture(GL_TEXTURE_2D,texture_grass);
 
-	glColor3f(0.0f, 0.5f, 0.4f);
+
 	
     
     
@@ -398,7 +398,6 @@ void world_init() {
 
 //els
     glBindTexture(GL_TEXTURE_2D,texture_els);
-    glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_QUADS);
     
     for(int i=-500;i<=400;i+=500){

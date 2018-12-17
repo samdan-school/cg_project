@@ -9,6 +9,7 @@
 #include "ReadFile.h"
 #include "w_constant.h"
 #include "residence.h"
+#include "texture.cpp"
 
 #define PI 3.14159265
 
@@ -123,10 +124,18 @@ void resize(int w, int h)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
+
 }
 
 void setup()
-{
+{   
+    glEnable(GL_TEXTURE_2D);
+    texture_zam = LoadBitmap("./texture/zam.bmp");
+    texture_els = LoadBitmap("./texture/els.bmp");
+    texture_us = LoadBitmap("./texture/2.bmp");
+    texture_grass = LoadBitmap("./texture/grass.bmp");
+    texture_walker = LoadBitmap("./texture/walker.bmp");
+
     read_verticies("./Baishin/residence.obj", residence_vertices, residence_faces, residence_colors, residence_num);
     read_colors("./Baishin/residence.txt", residence_colorInfo);
 

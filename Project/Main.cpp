@@ -10,6 +10,7 @@
 #include "readFile.cpp"
 #include "texture.cpp"
 #include "w_constant.h"
+#include "residence.h"
 #define PI 3.14159265
 
 using namespace std;
@@ -103,7 +104,10 @@ void displayMe(void)
 			0, 0, 0,
 			normalx, normaly,  normalz);
     world_init();
-    
+    draw_residence();
+    draw_home();
+    draw_red();
+    draw_black(); 
 	glPopMatrix();
 	glutSwapBuffers();
 }
