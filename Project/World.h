@@ -4,15 +4,25 @@
 #include<string.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
+#include "w_constant.h"
+
 int suuri_undur=-10;
 void zam_suur(){
-	glColor3f(1.0f, 1.0f, 1.0f);
+    glBindTexture(GL_TEXTURE_2D,texture_walker);
+
+	// glColor3f(1.0f, 1.0f, 1.0f);
 	glBegin(GL_QUADS);
+    glTexCoord2d(0,0.8);
     glVertex3f(-500,0,100);
+    glTexCoord2d(0,1);
     glVertex3f(-500,0,150);
+    glTexCoord2d(1,1);
     glVertex3f(500,0,150);
+    glTexCoord2d(1,0.8);
     glVertex3f(500,0,100);
     glEnd();
+
+
 	glBegin(GL_QUADS);
     glVertex3f(-500,0,100);
     glVertex3f(-500,0,150);
@@ -45,13 +55,23 @@ void zam_suur(){
     glEnd();
 }
 
-void zam1_suuri(){
-	glColor3f(0.5f, 0.5f, 0.5f);
-    glBegin(GL_QUADS);
 
+//zam undsen
+void zam1_suuri(){
+	// glColor3f(0.5f, 0.5f, 0.5f);
+
+    glBindTexture(GL_TEXTURE_2D,texture_zam);
+
+    glBegin(GL_QUADS);
+    glTexCoord2d(0,0);
     glVertex3f(-500,0,-100);
+    glTexCoord2d(0,1);
     glVertex3f(-500,0,100);
+
+    glTexCoord2d(1,1);
     glVertex3f(500,0,100);
+
+    glTexCoord2d(1,0);
     glVertex3f(500,0,-100);
 
     glEnd();
@@ -105,10 +125,16 @@ void zam1_suuri(){
 
 void baishin_suuri(){
 glColor3f(0.0f, 0.5f, 0.4f);
+glBindTexture(GL_TEXTURE_2D,texture_grass);
+
 	glBegin(GL_QUADS);
+    glTexCoord2d(0, 0.5);
     glVertex3f(-500,0,150);
+      glTexCoord2d(0, 1);
     glVertex3f(-500,0,500);
+      glTexCoord2d(1, 1);
     glVertex3f(500,0,500);
+      glTexCoord2d(1, 0.5);
     glVertex3f(500,0,150);
     glEnd();
 
@@ -148,14 +174,30 @@ glColor3f(0.0f, 0.5f, 0.4f);
     glEnd();
 }
 
+//yavgan zam
 void zam2_suuri(){
+    glBindTexture(GL_TEXTURE_2D,texture_walker);
     glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_QUADS);
 
+
+    glTexCoord2d(0,0.5);
     glVertex3f(-500,0,-200);
+    glTexCoord2d(0,1);
     glVertex3f(-500,0,-100);
+    glTexCoord2d(1,1);
     glVertex3f(500,0,-100);
+    glTexCoord2d(1,0.5);
     glVertex3f(500,0,-200);
+
+    // glTexCoord2d(0,0.5);
+    // glVertex3f(-500,0,-200);
+    // glTexCoord2d(1,0);
+    // glVertex3f(-500,0,-100);
+    // glTexCoord2d(1,1);
+    // glVertex3f(500,0,-100);
+    // glTexCoord2d(0.5,1);
+    // glVertex3f(500,0,-200);
 
     glEnd();
 
@@ -202,13 +244,21 @@ void zam2_suuri(){
     glEnd();
 	
 }
+
+//grass
 void zam3_suuri(){
+
+    glBindTexture(GL_TEXTURE_2D,texture_grass);
+
 	glColor3f(0.0f, 0.5f, 0.4f);
 	glBegin(GL_QUADS);
-
+    glTexCoord2d(0,0.8);
     glVertex3f(-500,0,-260);
+    glTexCoord2d(0,1);
     glVertex3f(-500,0,-200);
+    glTexCoord2d(1,1);
     glVertex3f(500,0,-200);
+    glTexCoord2d(1,0.8);
     glVertex3f(500,0,-260);
 
     glEnd();
@@ -255,21 +305,36 @@ void zam3_suuri(){
     glEnd();
 }
 void world_init() {
-    glColor3f(0.0f, 0.0f, 1.0f);
-    glBegin(GL_QUADS);
+    // glColor3f(0.0f, 0.0f, 1.0f);
 
+    glBindTexture(GL_TEXTURE_2D,texture_us);
+    glBegin(GL_QUADS);
+    glTexCoord2d(0,0);
     glVertex3f(-500,0.5,-500);
+    glTexCoord2d(0,1);
     glVertex3f(-500,0.5,-420);
+    glTexCoord2d(1,0);
     glVertex3f(500,0.5,-420);
+    glTexCoord2d(1,1);
     glVertex3f(500,0.5,-500);
 
     glEnd();
-    glColor3f(0.86f, 0.82f, 0.71f);
-    glBegin(GL_QUADS);
 
+//els
+    glBindTexture(GL_TEXTURE_2D,texture_els);
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glBegin(GL_QUADS);
+    
+    glTexCoord2d(0,0.5);
     glVertex3f(-500,0.5,-420);
+
+    glTexCoord2d(0,1);
     glVertex3f(-500,0.5,-260);
+
+    glTexCoord2d(1,1);
     glVertex3f(500,0.5,-260);
+
+    glTexCoord2d(1,0.5);
     glVertex3f(500,0.5,-420);
 
     glEnd();
