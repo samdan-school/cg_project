@@ -8,3 +8,4 @@ Project.vcxproj.user
 *.opensdf
 *.exe
 *example*.cpp
+*vscode
