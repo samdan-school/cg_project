@@ -1,5 +1,7 @@
-#include <fstream>
+#if !defined(READ_FILE_H)
+#define READ_FILE_H
 
+#include <fstream>
 #include <vector>
 #include <iostream>
 #include <string>
@@ -59,12 +61,13 @@ public:
 	}
 };
 
-vector<Vertex> vertices;
-vector<Face> faces;
-vector<string> colors;
-vector<Color> colorInfo;
+// vector<Vertex> vertices;
+// vector<Face> faces;
+// vector<string> colors;
+// vector<Color> colorInfo;
 
-void ReadFromFile(string path1, string path2) {
+void read_verticies(string path1, vector<Vertex> &vertices, vector<Face> &faces, vector<string> &colors) {
+	cout << path1 << endl;
 	fstream file(path1);
 	if (!file.is_open()) {
 		std::cout << "NO!" << endl;
@@ -98,12 +101,11 @@ void ReadFromFile(string path1, string path2) {
 		}
 	}
 	file.close();
-	std::cout << colors.size() << " " << faces.size() << " " << vertices.size() << endl; 
+}
 
-
+void read_colors(string path2, vector<Color> &colorInfo) {
 	fstream file1(path2);
 	if (!file1.is_open()) {
-		std::cout << "NO!" << endl;
 		return;
 	}
 	while (!file1.eof()) {
@@ -120,11 +122,10 @@ void ReadFromFile(string path1, string path2) {
 		if (b == "Kd") {
 			file1 >> x >> y >> z;
 			Color temp(name, x, y, z);
-			std::cout << x << " " << y << " " << z << endl;
 			colorInfo.push_back(temp);
 		} 
 	}
 	file1.close();
-
-	std::cout << colorInfo.size() << endl;
 }
+
+#endif // READ_FILE_H
