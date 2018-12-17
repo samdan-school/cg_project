@@ -7,7 +7,9 @@
 
 #include "World.h"
 #include "ReadFile.h"
-
+#include "readFile.cpp"
+#include "texture.cpp"
+#include "w_constant.h"
 #define PI 3.14159265
 
 using namespace std;
@@ -121,6 +123,12 @@ void resize(int w, int h)
 
 void setup()
 {
+    glEnable(GL_TEXTURE_2D);
+    texture_zam = LoadBitmap("./texture/zam.bmp");
+    texture_els = LoadBitmap("./texture/els.bmp");
+    texture_us = LoadBitmap("./texture/2.bmp");
+    texture_grass = LoadBitmap("./texture/grass.bmp");
+    texture_walker = LoadBitmap("./texture/walker.bmp");
 	GLfloat  ambientLight[] = {0.4f, 0.4f, 0.4f, 1.0f };
     GLfloat  diffuseLight[] = {0.7f, 0.7f, 0.7f, 1.0f };
     GLfloat  specular[] = { 0.9f, 0.9f, 0.9f, 1.0f};
@@ -153,6 +161,7 @@ void setup()
     glMaterialfv(GL_FRONT, GL_SPECULAR,specref);
     glMateriali(GL_FRONT,GL_SHININESS,64);
     glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+    glEnable(GL_TEXTURE_2D);
 }
 int main(int argc, char **argv)
 {

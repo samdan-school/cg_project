@@ -30,4 +30,9 @@ vector<string> black_colors;
 vector<Color> black_colorInfo;
 vector<int> black_num;
 
+unsigned int texture_zam;
+unsigned int texture_els;
+unsigned int texture_us;
+unsigned int texture_grass;
+unsigned int texture_walker;
 #endif // CONSTANT_CPP
