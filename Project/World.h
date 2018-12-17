@@ -10,17 +10,36 @@ int suuri_undur=-10;
 void zam_suur(){
     glBindTexture(GL_TEXTURE_2D,texture_walker);
 
-	// glColor3f(1.0f, 1.0f, 1.0f);
 	glBegin(GL_QUADS);
-    glTexCoord2d(0,0.8);
-    glVertex3f(-500,0,100);
+
+    for(int i=-500;i<=400;i+=200){
+
+    glTexCoord2d(0,0.5);
+    glVertex3f(i,0.5,100);
+
     glTexCoord2d(0,1);
-    glVertex3f(-500,0,150);
+    glVertex3f(i,0.5,150);
+
     glTexCoord2d(1,1);
-    glVertex3f(500,0,150);
-    glTexCoord2d(1,0.8);
-    glVertex3f(500,0,100);
+    glVertex3f(i+200,0.5,150);
+
+    glTexCoord2d(1,0.5);
+    glVertex3f(i+200,0.5,100);
+    }
     glEnd();
+
+
+	// glColor3f(1.0f, 1.0f, 1.0f);
+	// glBegin(GL_QUADS);
+    // glTexCoord2d(0,0.8);
+    // glVertex3f(-500,0,100);
+    // glTexCoord2d(0,1);
+    // glVertex3f(-500,0,150);
+    // glTexCoord2d(1,1);
+    // glVertex3f(500,0,150);
+    // glTexCoord2d(1,0.8);
+    // glVertex3f(500,0,100);
+    // glEnd();
 
 
 	glBegin(GL_QUADS);
@@ -62,19 +81,35 @@ void zam1_suuri(){
 
     glBindTexture(GL_TEXTURE_2D,texture_zam);
 
-    glBegin(GL_QUADS);
+	glBegin(GL_QUADS);
+
+    for(int i=-500;i<=400;i+=200){
+
     glTexCoord2d(0,0);
-    glVertex3f(-500,0,-100);
+    glVertex3f(i,0.5,-100);
+
     glTexCoord2d(0,1);
-    glVertex3f(-500,0,100);
+    glVertex3f(i,0.5,100);
 
     glTexCoord2d(1,1);
-    glVertex3f(500,0,100);
+    glVertex3f(i+200,0.5,100);
 
     glTexCoord2d(1,0);
-    glVertex3f(500,0,-100);
-
+    glVertex3f(i+200,0.5,-100);
+    }
     glEnd();
+
+    // glBegin(GL_QUADS);
+    // glTexCoord2d(0,0);
+    // glVertex3f(-500,0,-100);
+    // glTexCoord2d(0,1);
+    // glVertex3f(-500,0,100);
+    // glTexCoord2d(1,1);
+    // glVertex3f(500,0,100);
+    // glTexCoord2d(1,0);
+    // glVertex3f(500,0,-100);
+
+    // glEnd();
 
 	glBegin(GL_QUADS);
 
@@ -181,14 +216,33 @@ void zam2_suuri(){
     glBegin(GL_QUADS);
 
 
+    // glTexCoord2d(0,0.5);
+    // glVertex3f(-500,0,-200);
+    // glTexCoord2d(0,1);
+    // glVertex3f(-500,0,-100);
+    // glTexCoord2d(1,1);
+    // glVertex3f(500,0,-100);
+    // glTexCoord2d(1,0.5);
+    // glVertex3f(500,0,-200);
+
+
+	glBegin(GL_QUADS);
+
+    for(int i=-500;i<=400;i+=200){
+
     glTexCoord2d(0,0.5);
-    glVertex3f(-500,0,-200);
+    glVertex3f(i,0.5,-200);
+
     glTexCoord2d(0,1);
-    glVertex3f(-500,0,-100);
+    glVertex3f(i,0.5,-100);
+
     glTexCoord2d(1,1);
-    glVertex3f(500,0,-100);
+    glVertex3f(i+200,0.5,-100);
+
     glTexCoord2d(1,0.5);
-    glVertex3f(500,0,-200);
+    glVertex3f(i+200,0.5,-200);
+    }
+    glEnd();
 
     // glTexCoord2d(0,0.5);
     // glVertex3f(-500,0,-200);
@@ -251,17 +305,39 @@ void zam3_suuri(){
     glBindTexture(GL_TEXTURE_2D,texture_grass);
 
 	glColor3f(0.0f, 0.5f, 0.4f);
-	glBegin(GL_QUADS);
-    glTexCoord2d(0,0.8);
-    glVertex3f(-500,0,-260);
-    glTexCoord2d(0,1);
-    glVertex3f(-500,0,-200);
-    glTexCoord2d(1,1);
-    glVertex3f(500,0,-200);
-    glTexCoord2d(1,0.8);
-    glVertex3f(500,0,-260);
+	
+    
+    
+    // glBegin(GL_QUADS);
+    //     glTexCoord2d(0,0.8);
+    //     glVertex3f(-500,0,-260);
+    //     glTexCoord2d(0,1);
+    //     glVertex3f(-500,0,-200);
+    //     glTexCoord2d(1,1);
+    //     glVertex3f(500,0,-200);
+    //     glTexCoord2d(1,0.8);
+    //     glVertex3f(500,0,-260);
+    // glEnd();
 
+
+	glBegin(GL_QUADS);
+
+    for(int i=-500;i<=400;i+=500){
+
+    glTexCoord2d(0,0.8);
+    glVertex3f(i,0.5,-260);
+
+    glTexCoord2d(0,1);
+    glVertex3f(i,0.5,-200);
+
+    glTexCoord2d(1,1);
+    glVertex3f(i+500,0.5,-200);
+
+    glTexCoord2d(1,0.8);
+    glVertex3f(i+500,0.5,-260);
+    }
     glEnd();
+
 	glBegin(GL_QUADS);
 
     glVertex3f(-500,suuri_undur,-260);
@@ -325,17 +401,20 @@ void world_init() {
     glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_QUADS);
     
+    for(int i=-500;i<=400;i+=500){
+
     glTexCoord2d(0,0.5);
-    glVertex3f(-500,0.5,-420);
+    glVertex3f(i,0.5,-420);
 
     glTexCoord2d(0,1);
-    glVertex3f(-500,0.5,-260);
+    glVertex3f(i,0.5,-260);
 
     glTexCoord2d(1,1);
-    glVertex3f(500,0.5,-260);
+    glVertex3f(i+500,0.5,-260);
 
     glTexCoord2d(1,0.5);
-    glVertex3f(500,0.5,-420);
+    glVertex3f(i+500,0.5,-420);
+    }
 
     glEnd();
 
