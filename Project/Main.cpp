@@ -8,6 +8,7 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 float posx=0.0f,posz=0.0f,posy=2000.0f;
 float normalx=0, normaly=0, normalz=1;
 
@@ -205,9 +206,13 @@ void setup()
     glMateriali(GL_FRONT,GL_SHININESS,64);
     glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 }
+=======
+#include "ReadFile.h"
+>>>>>>> 2f7ed16cb43598bf2f39e24d2405a48e9c3953da
 
 int main(int argc, char **argv)
 {
+	/*
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(800, 800);
@@ -219,5 +224,10 @@ int main(int argc, char **argv)
     glutKeyboardFunc(normalKeys);
 	setup();
 	glutMainLoop();
+	*/
+	ReadFromFile(".\\Baishin\\residence.obj", ".\\Baishin\\residence.txt");
+
+	system("pause");
+
 	return 0;
 }
