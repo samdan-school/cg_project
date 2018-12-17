@@ -7,3 +7,4 @@ Project.vcxproj.user
 *.opendb
 *.opensdf
 *.exe
+*example*.cpp

@@ -6,6 +6,7 @@
 #include <GL/glut.h>
 
 #include "World.h"
+#include "ReadFile.h"
 
 #define PI 3.14159265
 
