@@ -174,7 +174,7 @@ void setup()
     for (int i = 0; i < 250; i++) {
         float s_x = rand() % 1000 - 500;
         float s_y = rand() % 400 + 600;
-        float s_z = rand() % 1300 - 650;
+        float s_z = rand() % 1100 - 700;
         // cout << s_x << " " << s_y << " " << s_z << endl;
         Snowflack temp(s_x, s_y, s_z);
         snow.push_back(temp);
