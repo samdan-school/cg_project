@@ -50,4 +50,16 @@ unsigned int texture_walker;
 
 float t = 0.0;
 bool t_inc = true;
+
+float scale_factor = float(1.0 / 5);
+const float red_car_init_position = -300;
+float red_car_position = red_car_init_position;
+float red_car_speed = 13;
+
+const float black_car_init_position = -30;
+float black_car_position = black_car_init_position;
+float black_car_speed = 20;
+
+const float road_start = -1000;
+const float road_end = 1000;
 #endif // CONSTANT_CPP
