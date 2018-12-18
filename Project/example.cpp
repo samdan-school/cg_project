@@ -14,6 +14,8 @@
 #include "residence.h"
 #include "Car.h"
 
+#include "Ocean.h"
+
 #define PI 3.14159265
 
 using namespace std;
@@ -115,7 +117,7 @@ void displayMe(void)
     // draw_red();
     // draw_black();
 
-    draw_water(red_car_speed); 
+    draw_water(t); 
     move_red_car(red_car_speed, 1);
     move_black_car(black_car_speed, -1);
     
@@ -167,17 +169,17 @@ void setup()
     read_verticies("./water/water.obj", water_vertices, water_faces, water_colors, water_num);
     read_colors("./water/water.txt", water_colorInfo);
 
-	GLfloat  ambientLight[] = {0.1f, 0.1f, 0.1f, 1.0f };
-    GLfloat  diffuseLight[] = {1, 1, 1, 1.0f };
-    GLfloat  specular[] = { 0.5f, 0.5f, 0.5f, 1.0f};
-    GLfloat  lightPos[] = { -3000.0f, 3000.0f, -1500.0f, 1.0f };
-    GLfloat  specref[] =  { 0.3f, 0.3f, 0.3f, 0.3f };
-        glEnable(GL_DEPTH_TEST);    // Hidden surface removal
-        glEnable(GL_CULL_FACE);        // Do not calculate inside of solid object
-        glFrontFace(GL_CCW);
+	GLfloat  ambientLight[] = {0.3f, 0.3f, 0.3f, 0.3f };
+    GLfloat  diffuseLight[] = {0.15f, 0.15f, 0.15f, 1.0f };
+    GLfloat  specular[] = { 0.0f, 0.0f, 0.0f, 1.0f};
+    GLfloat  lightPos[] = { -3000.0f, 1500.0f, -3000.0f, 1.0f };
 
-       // Enable lighting
-       glEnable(GL_LIGHTING);
+    glEnable(GL_DEPTH_TEST);    // Hidden surface removal
+    glEnable(GL_CULL_FACE);        // Do not calculate inside of solid object
+    glFrontFace(GL_CCW);
+
+    // Enable lighting
+    glEnable(GL_LIGHTING);
 
     // Setup light 0
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,ambientLight);
@@ -186,8 +188,8 @@ void setup()
     glLightfv(GL_LIGHT0,GL_SPECULAR,specular);
 
 //    Position and turn on the light
-    glLightfv(GL_LIGHT0,GL_POSITION,lightPos);
     glEnable(GL_LIGHT0);
+    // glEnable(GL_LIGHT1);
 
 //    Enable color tracking
 
