@@ -11,6 +11,8 @@
 #include "residence.h"
 #include "texture.cpp"
 
+#include "Ocean.h"
+
 #define PI 3.14159265
 
 using namespace std;
