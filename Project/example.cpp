@@ -5,11 +5,14 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 
-#include "World.h"
-#include "ReadFile.h"
 #include "w_constant.h"
-#include "residence.h"
+
 #include "texture.cpp"
+#include "ReadFile.h"
+
+#include "World.h"
+#include "residence.h"
+#include "Car.h"
 
 #define PI 3.14159265
 
@@ -109,10 +112,12 @@ void displayMe(void)
       
     draw_residence();
     draw_home();
-    draw_red();
-    draw_black();
+    // draw_red();
+    // draw_black();
 
-    draw_water(t); 
+    draw_water(red_car_speed); 
+    move_red_car(red_car_speed, 1);
+    move_black_car(black_car_speed, -1);
     
 	glPopMatrix();
 	glutSwapBuffers();
@@ -213,6 +218,14 @@ void timer(int value) {
         {
             t_inc = true;
         }
+    }
+
+    if (red_car_position <= road_start || red_car_position >= road_end) {
+        red_car_position = -800;
+    }
+
+    if (black_car_position <= road_start || black_car_position >= road_end) {
+        black_car_position = 900;
     }
 
     glutPostRedisplay();
