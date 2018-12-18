@@ -10,7 +10,7 @@ void draw_water_face(vector<Face> &face, vector<Color> &color_info, vector<strin
 		for (const Color &color : color_info) {
 			if(color.name == colors[l]){
 				
-				glColor4f(color.r, color.b, color.g, 0.55);
+				glColor4f(color.r, color.b, color.g, 0.35);
 				for(int s = 0; s < num[l]; s++){
 
 					calcNormal(face[i], normal);
@@ -23,7 +23,7 @@ void draw_water_face(vector<Face> &face, vector<Color> &color_info, vector<strin
 						
 						glVertex3f(2*face[i].v[j].x, 2*face[i].v[j].y, 2*face[i].v[j].z);
 					}
-					glColor4f(color.r, color.b, color.g, 0.55);
+					glColor4f(color.r, color.b, color.g, 0.35);
 					i++;
 				}
 			}
@@ -81,6 +81,62 @@ for(int i=0; i< water_faces.size(); i++){
 
 }
 
+void draw_shark_face(vector<Face> &face, vector<Color> &color_info, vector<string> &colors, vector<int> &num){
+	glBegin(GL_TRIANGLES);
+	int i=0;
+	float normal[3];
+	for(int l = 0; l < colors.size(); l++){
+		for (const Color &color : color_info) {
+			if(color.name == colors[l]){
+				
+				glColor4f(color.r, color.b, color.g, 0.8);
+				for(int s = 0; s < num[l]; s++){
+
+					calcNormal(face[i], normal);
+					glNormal3fv(normal);
+
+					for (int j = 0; j < 3; ++j){
+						glVertex3f(2*face[i].v[j].x, 2*face[i].v[j].y, 2*face[i].v[j].z);
+					}
+					i++;
+				}
+			}
+		}
+	}
+	glEnd();
+
+}
+void draw_shark(float t){
+	glPushMatrix();
+	glTranslatef(-200,-30,-650);
+	glRotatef(-90, 1, 0, 0);
+	glRotatef(-90, 0, 0, 1);
+	glScalef(0.5,0.5,0.5);
+	
+
+    glEnable(GL_COLOR_MATERIAL);
+	glEnable(GL_BLEND);
+	draw_shark_face(shark_faces, shark_colorInfo, shark_colors, shark_num);
+	glDisable(GL_BLEND);
+
+	glPopMatrix();
+	
+}
+
+
+void draw_boat(){
+	glPushMatrix();
+	glTranslatef(0,-10,-640);
+	glRotatef(-90, 1, 0, 0);
+	glRotatef(-90, 0, 0, 1);
+
+    glEnable(GL_COLOR_MATERIAL);
+//	glEnable(GL_BLEND);
+	draw_face(boat_faces, boat_colorInfo, boat_colors, boat_num);
+	//glDisable(GL_BLEND);
+
+	glPopMatrix();
+}
 #endif 
 
 
