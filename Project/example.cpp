@@ -10,7 +10,7 @@
 #include "w_constant.h"
 #include "residence.h"
 #include "texture.cpp"
-
+#include "Tree.h"
 #include "Ocean.h"
 
 #define PI 3.14159265
@@ -113,7 +113,7 @@ void displayMe(void)
     draw_home();
     draw_red();
     draw_black();
-
+    draw_tree();
     draw_water(t); 
     
 	glPopMatrix();
@@ -144,7 +144,7 @@ void setup()
     texture_us = LoadBitmap("./texture/2.bmp");
     texture_grass = LoadBitmap("./texture/grass.bmp");
     texture_walker = LoadBitmap("./texture/walker.bmp");
-
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_CONSTANT_ALPHA);
     read_verticies("./Baishin/residence.obj", residence_vertices, residence_faces, residence_colors, residence_num);
     read_colors("./Baishin/residence.txt", residence_colorInfo);
 
@@ -164,8 +164,11 @@ void setup()
     read_verticies("./water/water.obj", water_vertices, water_faces, water_colors, water_num);
     read_colors("./water/water.txt", water_colorInfo);
 
-	GLfloat  ambientLight[] = {0.1f, 0.1f, 0.1f, 1.0f };
-    GLfloat  diffuseLight[] = {1, 1, 1, 1.0f };
+    read_verticies("./tree/tree1.obj", tree1_vertices, tree1_faces,tree1_colors, tree1_num);
+    read_colors("./tree/tree1.txt", tree1_colorInfo);
+
+	GLfloat  ambientLight[] = {0.2f, 0.2f, 0.2f, 1.0f };
+    GLfloat  diffuseLight[] = {0.15, 0.15, 0.15, 1.0f };
     GLfloat  specular[] = { 0.5f, 0.5f, 0.5f, 1.0f};
     GLfloat  lightPos[] = { -3000.0f, 3000.0f, -1500.0f, 1.0f };
     GLfloat  specref[] =  { 0.3f, 0.3f, 0.3f, 0.3f };

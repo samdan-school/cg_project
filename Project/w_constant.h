@@ -36,6 +36,12 @@ vector<string> water_colors;
 vector<Color> water_colorInfo;
 vector<int> water_num;
 
+vector<Vertex> tree1_vertices;
+vector<Face> tree1_faces;
+vector<string> tree1_colors;
+vector<Color> tree1_colorInfo;
+vector<int> tree1_num;
+
 unsigned int texture_zam;
 unsigned int texture_els;
 unsigned int texture_us;
