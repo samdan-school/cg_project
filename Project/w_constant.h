@@ -42,6 +42,18 @@ vector<string> tree1_colors;
 vector<Color> tree1_colorInfo;
 vector<int> tree1_num;
 
+vector<Vertex> shark_vertices;
+vector<Face> shark_faces;
+vector<string> shark_colors;
+vector<Color> shark_colorInfo;
+vector<int> shark_num;
+
+vector<Vertex> boat_vertices;
+vector<Face> boat_faces;
+vector<string> boat_colors;
+vector<Color> boat_colorInfo;
+vector<int> boat_num;
+
 unsigned int texture_zam;
 unsigned int texture_els;
 unsigned int texture_us;

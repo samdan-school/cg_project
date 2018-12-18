@@ -120,7 +120,8 @@ void displayMe(void)
     draw_water(t); 
     move_red_car(red_car_speed, 1);
     move_black_car(black_car_speed, -1);
-    
+    draw_shark(t);
+    draw_boat();
 	glPopMatrix();
 	glutSwapBuffers();
 }
@@ -162,6 +163,9 @@ void setup()
     read_verticies("./home/home.obj", home_vertices, home_faces, home_colors, home_num);
     read_colors("./home/home.txt", home_colorInfo);
 
+    read_verticies("./boat/boat1.obj", boat_vertices, boat_faces, boat_colors, boat_num);
+    read_colors("./boat/boat1.txt", boat_colorInfo);
+
     read_verticies("./car/red.obj", red_vertices, red_faces, red_colors, red_num);
     read_colors("./car/red.txt", red_colorInfo);
 
@@ -173,6 +177,9 @@ void setup()
 
     read_verticies("./tree/tree1.obj", tree1_vertices, tree1_faces, tree1_colors, tree1_num);
     read_colors("./tree/tree1.txt", tree1_colorInfo);
+
+    read_verticies("./shark/shark.obj", shark_vertices, shark_faces, shark_colors, shark_num);
+    read_colors("./shark/shark.txt", shark_colorInfo);
 
 	GLfloat  ambientLight[] = {0.3f, 0.3f, 0.3f, 0.3f };
     GLfloat  diffuseLight[] = {0.15f, 0.15f, 0.15f, 1.0f };

@@ -364,11 +364,11 @@ void black_draw(){
 
     glTexCoord2d(0,1);
     glVertex3f(-500,30.5,-1500);
-    glTexCoord2d(0,1);
+    glTexCoord2d(1,0);
     glVertex3f(-1500,30.5,-1500);
     glTexCoord2d(1,1);
     glVertex3f(-1500,30.5,500);
-    glTexCoord2d(1,0.5);
+    glTexCoord2d(0, 0);
     glVertex3f(-500,30.5,500);
     glEnd();
 
@@ -376,11 +376,11 @@ void black_draw(){
 
     glTexCoord2d(0,1);
     glVertex3f(500,30.5,500);
-    glTexCoord2d(0,1);
+    glTexCoord2d(1,0);
     glVertex3f(1500,30.5,500);
     glTexCoord2d(1,1);
     glVertex3f(1500,30.5,-1500);
-    glTexCoord2d(1,0.5);
+    glTexCoord2d(0,0);
     glVertex3f(500,30.5,-1500);
     glEnd();
 }
