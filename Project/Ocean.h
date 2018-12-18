@@ -17,13 +17,10 @@ void draw_water_face(vector<Face> &face, vector<Color> &color_info, vector<strin
 					glNormal3fv(normal);
 					
 					for (int j = 0; j < 3; ++j){
-						if(face[i].v[j].x*20<=-340 || face[i].v[j].x*20>=700 ){
-							glColor3f(0,0,0);
-						}
 						
 						glVertex3f(2*face[i].v[j].x, 2*face[i].v[j].y, 2*face[i].v[j].z);
 					}
-					glColor4f(color.r, color.b, color.g, 0.55);
+				
 					i++;
 				}
 			}
@@ -71,7 +68,7 @@ for(int i=0; i< water_faces.size(); i++){
 }
 	glPushMatrix();
 	glTranslatef(-200, 0, -650);
-	glScalef(10.0,1,2);
+	glScalef(20.0,1,2);
 	glRotatef(-90, 1, 0, 0);
    	glEnable(GL_COLOR_MATERIAL);
 	glEnable(GL_BLEND);

@@ -357,10 +357,36 @@ void zam3_suuri(){
 
   
 }
+void black_draw(){
+    glBindTexture(GL_TEXTURE_2D,texture_black);
+    glNormal3fv(normal_world);
+	glBegin(GL_QUADS);
 
+    glTexCoord2d(0,1);
+    glVertex3f(-500,30.5,-1500);
+    glTexCoord2d(0,1);
+    glVertex3f(-1500,30.5,-1500);
+    glTexCoord2d(1,1);
+    glVertex3f(-1500,30.5,500);
+    glTexCoord2d(1,0.5);
+    glVertex3f(-500,30.5,500);
+    glEnd();
+
+    glBegin(GL_QUADS);
+
+    glTexCoord2d(0,1);
+    glVertex3f(500,30.5,500);
+    glTexCoord2d(0,1);
+    glVertex3f(1500,30.5,500);
+    glTexCoord2d(1,1);
+    glVertex3f(1500,30.5,-1500);
+    glTexCoord2d(1,0.5);
+    glVertex3f(500,30.5,-1500);
+    glEnd();
+}
 void world_init() {
     glEnable(GL_COLOR_MATERIAL);
-
+    black_draw();
     
     glEnable(GL_BLEND);
     glColor4f(0, 0, 0, 0.4);
@@ -392,5 +418,4 @@ void world_init() {
 	zam3_suuri();
     glDisable(GL_BLEND);
 }
-
 

@@ -112,7 +112,7 @@ void displayMe(void)
     glEnable(GL_TEXTURE_2D);
     world_init();
     glDisable(GL_TEXTURE_2D);
-      
+    
     draw_residence();
     draw_home();
     draw_tree();
@@ -149,6 +149,8 @@ void setup()
     texture_us = LoadBitmap("./texture/2.bmp");
     texture_grass = LoadBitmap("./texture/grass.bmp");
     texture_walker = LoadBitmap("./texture/walker.bmp");
+    texture_black = LoadBitmap("./texture/black.bmp");
+
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_CONSTANT_ALPHA);
     read_verticies("./Baishin/residence.obj", residence_vertices, residence_faces, residence_colors, residence_num);
     read_colors("./Baishin/residence.txt", residence_colorInfo);

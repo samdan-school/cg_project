@@ -47,6 +47,7 @@ unsigned int texture_els;
 unsigned int texture_us;
 unsigned int texture_grass;
 unsigned int texture_walker;
+unsigned int texture_black;
 
 float t = 0.0;
 bool t_inc = true;
