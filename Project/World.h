@@ -380,14 +380,6 @@ void zam3_suuri(){
     glVertex3f(500,0,-260);
 
     glEnd();
-
-    glColor3f(1,0,0);
-	glBegin(GL_QUADS);
-	glVertex3f(-800,0,500);
-	glVertex3f(-1300,0,500);
-	glVertex3f(-1300,0,-800);
-	glVertex3f(-800,0,-800);
-	glEnd();
 }
 void water(){
     glEnable(GL_COLOR_MATERIAL);
