@@ -14,12 +14,16 @@
 #include "World.h"
 #include "residence.h"
 #include "Car.h"
+#include "Snow.cpp"
 
 #include "Ocean.h"
 
 #define PI 3.14159265
 
 using namespace std;
+
+
+vector <Snowflack> snow;
 
 float posx=0.0f,posz=0.0f,posy=2000.0f;
 float normalx=0, normaly=0, normalz=1;
@@ -112,7 +116,7 @@ void displayMe(void)
     glEnable(GL_TEXTURE_2D);
     world_init();
     glDisable(GL_TEXTURE_2D);
-    
+
     draw_residence();
     draw_home();
     draw_tree();
@@ -122,6 +126,27 @@ void displayMe(void)
     move_black_car(black_car_speed, -1);
     draw_shark(t);
     draw_boat();
+
+    GLUquadricObj *pObj;
+    pObj = gluNewQuadric();
+
+    // Snow
+    glEnable(GL_COLOR_MATERIAL);
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    for (const Snowflack &a: snow) {
+        glPushMatrix();
+        
+        glTranslatef(a.x, a.y, a.z);
+        // gluQuadricNormals(pObj, GLU_SMOOTH);
+        gluSphere(pObj, 2, 50, 50);
+        
+        glPopMatrix();
+    }
+
+    // snow.init();
+    glDisable(GL_COLOR_MATERIAL);
+
 	glPopMatrix();
 	glutSwapBuffers();
 }
@@ -144,6 +169,17 @@ void resize(int w, int h)
 
 void setup()
 {   
+    // Snow
+    snow.reserve(250);
+    for (int i = 0; i < 250; i++) {
+        float s_x = rand() % 1000 - 500;
+        float s_y = rand() % 400 + 600;
+        float s_z = rand() % 1300 - 650;
+        // cout << s_x << " " << s_y << " " << s_z << endl;
+        Snowflack temp(s_x, s_y, s_z);
+        snow.push_back(temp);
+    }
+
     
     texture_zam = LoadBitmap("./texture/zam.bmp");
     texture_els = LoadBitmap("./texture/els.bmp");
@@ -240,6 +276,10 @@ void timer(int value) {
 
     if (black_car_position <= road_start || black_car_position >= road_end) {
         black_car_position = 900;
+    }
+
+    for (Snowflack &a: snow) {
+        a.update();
     }
 
     glutPostRedisplay();
