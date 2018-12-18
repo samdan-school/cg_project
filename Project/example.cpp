@@ -103,11 +103,16 @@ void displayMe(void)
     gluLookAt(	posx, posy, posz,
 			0, 0, 0,
 			normalx, normaly,  normalz);
+    glEnable(GL_TEXTURE_2D);
     world_init();
+    glDisable(GL_TEXTURE_2D);
+      
     draw_residence();
     draw_home();
     draw_red();
-    draw_black();    
+    draw_black();
+
+    draw_water(t); 
     
 	glPopMatrix();
 	glutSwapBuffers();
@@ -118,7 +123,9 @@ void resize(int w, int h)
 	glViewport(0, 0, w, h);
 	GLfloat fAspect = (GLfloat)w / (GLfloat)h;
 
+
 	glMatrixMode(GL_PROJECTION);
+    // glOrtho(-500,500,0,1000,-500,500);
     gluPerspective(35.0f, fAspect, 1.0, 20000.0);
   //  glShadeModel(GL_SMOOTH);
 	glMatrixMode(GL_MODELVIEW);
@@ -129,7 +136,7 @@ void resize(int w, int h)
 
 void setup()
 {   
-    glEnable(GL_TEXTURE_2D);
+    
     texture_zam = LoadBitmap("./texture/zam.bmp");
     texture_els = LoadBitmap("./texture/els.bmp");
     texture_us = LoadBitmap("./texture/2.bmp");
@@ -152,11 +159,14 @@ void setup()
     read_verticies("./car/black.obj", black_vertices, black_faces, black_colors, black_num);
     read_colors("./car/black.txt", black_colorInfo);
 
-	GLfloat  ambientLight[] = {0.15f, 0.15f, 0.15f, 1.0f };
-    GLfloat  diffuseLight[] = {1.0f, 1.0f, 1.0f, 1.0f };
-    GLfloat  specular[] = { 0.3f, 0.3f, 0.3f, 1.0f};
-    GLfloat  lightPos[] = { -4000.0f, 4000.0f, -4000.0f, 1.0f };
-    GLfloat  specref[] =  { 0.6f, 0.6f, 0.6f, 1.0f };
+    read_verticies("./water/water.obj", water_vertices, water_faces, water_colors, water_num);
+    read_colors("./water/water.txt", water_colorInfo);
+
+	GLfloat  ambientLight[] = {0.1f, 0.1f, 0.1f, 1.0f };
+    GLfloat  diffuseLight[] = {1, 1, 1, 1.0f };
+    GLfloat  specular[] = { 0.5f, 0.5f, 0.5f, 1.0f};
+    GLfloat  lightPos[] = { -3000.0f, 3000.0f, -1500.0f, 1.0f };
+    GLfloat  specref[] =  { 0.3f, 0.3f, 0.3f, 0.3f };
         glEnable(GL_DEPTH_TEST);    // Hidden surface removal
         glEnable(GL_CULL_FACE);        // Do not calculate inside of solid object
         glFrontFace(GL_CCW);
@@ -184,10 +194,35 @@ void setup()
 
     // glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 }
+
+void timer(int value) {
+    if ( t_inc )
+    {
+        t += 0.007;
+
+        if (t >= 1)
+        {
+            t_inc = false;
+        }
+    }
+    else
+    {
+        t -= 0.005;
+
+        if (t <= 0)
+        {
+            t_inc = true;
+        }
+    }
+
+    glutPostRedisplay();
+    glutTimerFunc(3, timer, 1);    
+}
+
 int main(int argc, char **argv)
 {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 	glutInitWindowSize(800, 800);
 	glutInitWindowPosition(200, 50);
 	glutCreateWindow("World");
@@ -196,6 +231,8 @@ int main(int argc, char **argv)
 	glutSpecialFunc(SpecialKeys);
     glutKeyboardFunc(normalKeys);
 	setup();
+    glutTimerFunc(33, timer, 1);
+
 	glutMainLoop();
 	return 0;
 }

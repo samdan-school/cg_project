@@ -5,11 +5,12 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 #include "w_constant.h"
+float normal_world[3]={0,1,0};
 
 int suuri_undur=-10;
 void zam_suur(){
     glBindTexture(GL_TEXTURE_2D,texture_walker);
-
+    glNormal3fv(normal_world);
 	glBegin(GL_QUADS);
 
     for(int i=-500;i<=400;i+=200){
@@ -78,7 +79,7 @@ void zam_suur(){
 //zam undsen
 void zam1_suuri(){
 
-
+    glNormal3fv(normal_world);
     glBindTexture(GL_TEXTURE_2D,texture_zam);
 
 	glBegin(GL_QUADS);
@@ -161,7 +162,7 @@ void zam1_suuri(){
 void baishin_suuri(){
 
 glBindTexture(GL_TEXTURE_2D,texture_grass);
-
+    glNormal3fv(normal_world);
 	glBegin(GL_QUADS);
     glTexCoord2d(0, 0.5);
     glVertex3f(-500,0,150);
@@ -212,7 +213,7 @@ glBindTexture(GL_TEXTURE_2D,texture_grass);
 //yavgan zam
 void zam2_suuri(){
     glBindTexture(GL_TEXTURE_2D,texture_walker);
-
+    glNormal3fv(normal_world);
     glBegin(GL_QUADS);
 
 
@@ -301,7 +302,7 @@ void zam2_suuri(){
 
 //grass
 void zam3_suuri(){
-
+    glNormal3fv(normal_world);
     glBindTexture(GL_TEXTURE_2D,texture_grass);
 
 
@@ -379,40 +380,88 @@ void zam3_suuri(){
     glVertex3f(500,0,-260);
 
     glEnd();
+
+    glColor3f(1,0,0);
+	glBegin(GL_QUADS);
+	glVertex3f(-800,0,500);
+	glVertex3f(-1300,0,500);
+	glVertex3f(-1300,0,-800);
+	glVertex3f(-800,0,-800);
+	glEnd();
 }
-void world_init() {
-    // glColor3f(0.0f, 0.0f, 1.0f);
-
-    glBindTexture(GL_TEXTURE_2D,texture_us);
+void water(){
+    glEnable(GL_COLOR_MATERIAL);
+    float x1=-500, x2=500, y1=0, y2 = suuri_undur, z1 = -500, z2 = -420;
+    // float x12=-500, x12=500, y11=0, y12 = suuri_undur, z11 = -500, z12 = -420;
+    
+    glColor3f(0,1,0);
     glBegin(GL_QUADS);
-    glTexCoord2d(0,0);
-    glVertex3f(-500,0.5,-500);
-    glTexCoord2d(0,1);
-    glVertex3f(-500,0.5,-420);
-    glTexCoord2d(1,0);
-    glVertex3f(500,0.5,-420);
-    glTexCoord2d(1,1);
-    glVertex3f(500,0.5,-500);
-
+    glVertex3f(x1,y1,z1);
+    glVertex3f(x1,y1,z2);
+    glVertex3f(x2,y1,z2);
+    glVertex3f(x2,y1,z1);
     glEnd();
 
-//els
+    glBegin(GL_QUADS);
+    glVertex3f(x1,y2,z1);
+    glVertex3f(x1,y2,z2);
+    glVertex3f(x2,y2,z2);
+    glVertex3f(x2,y2,z1);
+    glEnd();
+    
+    glBegin(GL_QUADS);
+    glVertex3f(x1,y1,z1);
+    glVertex3f(x1,y1,z2);
+    glVertex3f(x1,y2,z2);
+    glVertex3f(x1,y2,z1);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glVertex3f(x1,y2,z2);
+    glVertex3f(x1,y1,z2);
+    glVertex3f(x2,y1,z2);
+    glVertex3f(x2,y2,z2);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glVertex3f(x2,y2,z2);
+    glVertex3f(x1,y2,z2);
+    glVertex3f(x1,y1,z2);
+    glVertex3f(x2,y1,z2);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glVertex3f(x1,y1,z1);
+    glVertex3f(x1,y2,z1);
+    glVertex3f(x2,y2,z2);
+    glVertex3f(x2,y1,z2);
+    glEnd();
+    glDisable(GL_COLOR_MATERIAL);
+
+}
+void world_init() {
+    glEnable(GL_COLOR_MATERIAL);
+
+  //  water();
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_CONSTANT_ALPHA);
+    glEnable(GL_BLEND);
+    glColor4f(0, 0, 0, 0.4);
     glBindTexture(GL_TEXTURE_2D,texture_els);
     glBegin(GL_QUADS);
     
     for(int i=-500;i<=400;i+=500){
 
     glTexCoord2d(0,0.5);
-    glVertex3f(i,0.5,-420);
+    glVertex3f(i,0,-420);
 
     glTexCoord2d(0,1);
-    glVertex3f(i,0.5,-260);
+    glVertex3f(i,0,-260);
 
     glTexCoord2d(1,1);
-    glVertex3f(i+500,0.5,-260);
+    glVertex3f(i+500,0,-260);
 
     glTexCoord2d(1,0.5);
-    glVertex3f(i+500,0.5,-420);
+    glVertex3f(i+500,0,-420);
     }
 
     glEnd();
@@ -423,6 +472,7 @@ void world_init() {
 	baishin_suuri();
 	zam2_suuri();
 	zam3_suuri();
+    glDisable(GL_BLEND);
 }
 
 
