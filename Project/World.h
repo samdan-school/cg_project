@@ -381,68 +381,12 @@ void zam3_suuri(){
 
     glEnd();
 
-    glColor3f(1,0,0);
-	glBegin(GL_QUADS);
-	glVertex3f(-800,0,500);
-	glVertex3f(-1300,0,500);
-	glVertex3f(-1300,0,-800);
-	glVertex3f(-800,0,-800);
-	glEnd();
+  
 }
-void water(){
-    glEnable(GL_COLOR_MATERIAL);
-    float x1=-500, x2=500, y1=0, y2 = suuri_undur, z1 = -500, z2 = -420;
-    // float x12=-500, x12=500, y11=0, y12 = suuri_undur, z11 = -500, z12 = -420;
-    
-    glColor3f(0,1,0);
-    glBegin(GL_QUADS);
-    glVertex3f(x1,y1,z1);
-    glVertex3f(x1,y1,z2);
-    glVertex3f(x2,y1,z2);
-    glVertex3f(x2,y1,z1);
-    glEnd();
 
-    glBegin(GL_QUADS);
-    glVertex3f(x1,y2,z1);
-    glVertex3f(x1,y2,z2);
-    glVertex3f(x2,y2,z2);
-    glVertex3f(x2,y2,z1);
-    glEnd();
-    
-    glBegin(GL_QUADS);
-    glVertex3f(x1,y1,z1);
-    glVertex3f(x1,y1,z2);
-    glVertex3f(x1,y2,z2);
-    glVertex3f(x1,y2,z1);
-    glEnd();
-
-    glBegin(GL_QUADS);
-    glVertex3f(x1,y2,z2);
-    glVertex3f(x1,y1,z2);
-    glVertex3f(x2,y1,z2);
-    glVertex3f(x2,y2,z2);
-    glEnd();
-
-    glBegin(GL_QUADS);
-    glVertex3f(x2,y2,z2);
-    glVertex3f(x1,y2,z2);
-    glVertex3f(x1,y1,z2);
-    glVertex3f(x2,y1,z2);
-    glEnd();
-
-    glBegin(GL_QUADS);
-    glVertex3f(x1,y1,z1);
-    glVertex3f(x1,y2,z1);
-    glVertex3f(x2,y2,z2);
-    glVertex3f(x2,y1,z2);
-    glEnd();
-    glDisable(GL_COLOR_MATERIAL);
-
-}
 void world_init() {
     glEnable(GL_COLOR_MATERIAL);
 
-  //  water();
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_CONSTANT_ALPHA);
     glEnable(GL_BLEND);
     glColor4f(0, 0, 0, 0.4);
