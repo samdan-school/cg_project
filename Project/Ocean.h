@@ -10,7 +10,7 @@ void draw_water_face(vector<Face> &face, vector<Color> &color_info, vector<strin
 		for (const Color &color : color_info) {
 			if(color.name == colors[l]){
 				
-				glColor3f(color.r, color.b, color.g);
+				glColor4f(color.r, color.b, color.g, 0.55);
 				for(int s = 0; s < num[l]; s++){
 
 					calcNormal(face[i], normal);
@@ -23,7 +23,7 @@ void draw_water_face(vector<Face> &face, vector<Color> &color_info, vector<strin
 						
 						glVertex3f(2*face[i].v[j].x, 2*face[i].v[j].y, 2*face[i].v[j].z);
 					}
-					glColor3f(color.r, color.b, color.g);
+					glColor4f(color.r, color.b, color.g, 0.55);
 					i++;
 				}
 			}
@@ -35,18 +35,19 @@ void draw_water(float t){
 
 vector<Face> f1;
 float zz = -40;
+float xx = -20;
 for(int i=0; i< water_faces.size(); i++){
 	float x1=water_faces[i].v[0].x+zz;
 	float y1=water_faces[i].v[0].y;
-	float z1=water_faces[i].v[0].z;
+	float z1=water_faces[i].v[0].z+xx;
 	Vertex temp1(x1,y1,z1);
 	float x2=water_faces[i].v[1].x+zz;
 	float y2=water_faces[i].v[1].y;
-	float z2=water_faces[i].v[1].z;
+	float z2=water_faces[i].v[1].z+xx;
 	Vertex temp2(x2,y2,z2);
 	float x3=water_faces[i].v[2].x+zz;
 	float y3=water_faces[i].v[2].y;
-	float z3=water_faces[i].v[2].z;
+	float z3=water_faces[i].v[2].z+xx;
 	Vertex temp3(x3,y3,z3);
 	Face temp4(temp1, temp2, temp3);
 	f1.push_back(temp4);
@@ -69,11 +70,13 @@ for(int i=0; i< water_faces.size(); i++){
 	f2.push_back(temp4);
 }
 	glPushMatrix();
-	glTranslatef(-200, -10, -650);
+	glTranslatef(-200, 0, -650);
 	glScalef(10.0,1,2);
 	glRotatef(-90, 1, 0, 0);
    	glEnable(GL_COLOR_MATERIAL);
+	glEnable(GL_BLEND);
 	draw_water_face(f2, water_colorInfo, water_colors, water_num);
+	glDisable(GL_BLEND);
 	glPopMatrix();
 
 }
