@@ -34,8 +34,6 @@ class Snowflack {
             life = y;
             return;
         }
-        x -= rand() % 4 - 2;
-        z -= rand() % 4 - 2;
         y -= 10;
         life -= 10;
     }
